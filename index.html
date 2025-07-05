@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZyyPranz Official</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000000, #004d00);
+            color: white;
+            font-family: 'Courier New', monospace;
+            overflow-x: hidden;
+        }.matrix {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background: black;
+        color: #00ff00;
+        font-size: 20px;
+        white-space: pre;
+        opacity: 0.1;
+    }
+
+    .container {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .container img {
+        max-width: 90%;
+        border-radius: 15px;
+        box-shadow: 0 0 20px #00ff00;
+    }
+
+    .button {
+        display: block;
+        margin: 15px auto;
+        padding: 15px 30px;
+        background-color: #00cc00;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        text-decoration: none;
+        transition: transform 0.3s, box-shadow 0.3s;
+        width: 80%;
+        max-width: 300px;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px #00ff00;
+    }
+
+    .marquee {
+        width: 100%;
+        background: #000;
+        color: #00ff00;
+        padding: 10px 0;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .marquee p {
+        display: inline-block;
+        padding-left: 100%;
+        animation: marquee 15s linear infinite;
+    }
+
+    @keyframes marquee {
+        from {
+            transform: translateX(0%);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 30px;
+        font-weight: bold;
+        color: #00ff00;
+    }
+</style>
+
+</head><body><!-- Background Angka 1 dan 0 -->
+<div class="matrix" id="matrix"></div>
+
+<!-- Foto -->
+<div class="container">
+    <img src="https://pomf2.lain.la/f/i3034dwx.jpg" alt="ZyyPranz Image">
+</div>
+
+<!-- Teks Berjalan Atas -->
+<div class="marquee">
+    <p>[ ZyyPranz Official ] [ ZyyPranz Official ] [ ZyyPranz Official ] [ ZyyPranz Official ]</p>
+</div>
+
+<!-- Buttons -->
+<div class="container">
+    <a class="button" href="https://wa.me/6285710834661" target="_blank">[ NUMBER OWNER ]</a>
+    <a class="button" href="https://chat.whatsapp.com/KxB0c9KbBqK22mBTzAo2VE" target="_blank">[ GRUP MURWEB FREE ]</a>
+    <a class="button" href="https://chat.whatsapp.com/HlNHq2tiqseChsKe7Qq54E" target="_blank">[ GRUP PUSH CH FREE ]</a>
+    <a class="button" href="https://whatsapp.com/channel/0029VbB0liX47XeDh5uLoY3V" target="_blank">[ SALURAN ZYYPRANZ ]</a>
+
+    <!-- Button Musik -->
+    <button class="button" onclick="toggleMusic()" id="musicButton">[ MUSIC ]</button>
+</div>
+
+<!-- Teks Berjalan Bawah -->
+<div class="marquee">
+    <p>[ TERSEDIA : SEWA BOT, MURBUG, MURSUN, JASA BUG, NOKOS, JASA SUNTIK SOSMED DLL ]</p>
+</div>
+
+<!-- Footer -->
+<footer>
+    ZYYPRANZ OFFICIAL
+</footer>
+
+<!-- Musik -->
+<audio id="music" loop>
+    <source src="https://pomf2.lain.la/f/wd9a4oq0.m4a" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+</audio>
+
+<!-- Script Matrix Effect dan Musik -->
+<script>
+    // Efek Matrix
+    const matrix = document.getElementById('matrix');
+    let columns = Math.floor(window.innerWidth / 20);
+    let lines = '';
+
+    for (let i = 0; i < 1000; i++) {
+        lines += Math.random() > 0.5 ? '1' : '0';
+        if ((i + 1) % columns === 0) {
+            lines += '\n';
+        }
+    }
+
+    matrix.textContent = lines;
+
+    setInterval(() => {
+        let newLines = '';
+        for (let i = 0; i < 1000; i++) {
+            newLines += Math.random() > 0.5 ? '1' : '0';
+            if ((i + 1) % columns === 0) {
+                newLines += '\n';
+            }
+        }
+        matrix.textContent = newLines;
+    }, 100);
+
+    // Musik Otomatis Saat Sentuhan atau Scroll
+    const music = document.getElementById('music');
+    const musicButton = document.getElementById('musicButton');
+    let isPlaying = false;
+
+    function playMusicOnce() {
+        if (!isPlaying) {
+            music.play();
+            isPlaying = true;
+        }
+        document.removeEventListener('touchstart', playMusicOnce);
+        document.removeEventListener('scroll', playMusicOnce);
+    }
+
+    document.addEventListener('touchstart', playMusicOnce);
+    document.addEventListener('scroll', playMusicOnce);
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
+        }
+    }
+</script>
+
+</body></html>
